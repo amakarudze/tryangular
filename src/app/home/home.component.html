@@ -1,0 +1,24 @@
+    <div class="row">
+      <div class="col-sm-12">
+        <carousel class="text-center" *ngIf="homeImageList">
+          <slide>
+            <a routerLink='videos/' routerLinkActive="active" (click)="preventNormal($event, imageObj)">
+              <img class="img-main-carousel" [src]="videoListDefaultImage" alt="Videos">
+            </a>
+            <div class="carousel-caption">
+              <h3>Video List</h3>
+              <p><a class="btn btn-primary" routerLink='videos/' routerLinkActive="active">View Videos</a></p>
+            </div>
+          </slide>
+          <slide *ngFor="let imageObj of homeImageList">
+            <a routerLink='videos/{{ imageObj.slug }}' routerLinkActive="active" (click)="preventNormal($event, imageObj)">
+            <img class="img-main-carousel" [src]="imageObj.image" alt="{{ imageObj.title }}">
+            </a>
+            <div class="carousel-caption">
+              <h3>{{ imageObj.name}}</h3>
+              <p><a class="btn btn-default" routerLink='videos/{{ imageObj.slug}}' routerLinkActive="active">View</a></p>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </div>
